@@ -1,15 +1,18 @@
 # frozen_string_literal: true
+# 管理者ログイン
 
 class Admin::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   
-  # def after_sign_in_path_for(resources)
-  #   admin_items_path
-  # end
+  # ログイン後遷移先
+  def after_sign_in_path_for(resources)
+    admin_items_path
+  end
   
-  # def after_sign_out_path_for(resources)
-  #   root_path
-  # end
+  # ログアウト後遷移先
+  def after_sign_out_path_for(resources)
+    root_path
+  end
 
   # GET /resource/sign_in
   # def new
@@ -26,7 +29,7 @@ class Admin::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  protected
+  # protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params

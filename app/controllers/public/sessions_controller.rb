@@ -1,15 +1,18 @@
 # frozen_string_literal: true
+# 顧客用ログイン画面
 
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   
-  # def after_sign_in_path_for(resources)
-  #   items_path
-  # end
+  # ログイン後遷移先
+  def after_sign_in_path_for(resources)
+    items_path
+  end
   
-  # def after_sign_out_path_for(resources)
-  #   root_path
-  # end
+  # ログアウト後遷移先
+  def after_sign_out_path_for(resources)
+    root_path
+  end
 
   # GET /resource/sign_in
   # def new

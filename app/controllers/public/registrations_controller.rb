@@ -1,13 +1,16 @@
 # frozen_string_literal: true
+# 顧客用新規登録画面
 
 class Public::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   
+  # 新規登録後遷移先
   def after_sign_up_path_for(resources)
     item_path
   end
   
+  # ログアウト後遷移先
   def after_sign_out_path_for(resources)
     root_path
   end
@@ -49,9 +52,11 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number])
-  # end
+  
+  # 追加カラムの保存許可
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params

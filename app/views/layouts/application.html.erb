@@ -11,14 +11,10 @@
   </head>
 
   <body>
-    <header>
-      <% if user_signed_in? %>
-        <li>
-          <%=
-        </li>
-    </header>
+    <!--顧客用or管理者用ヘッダー：部分テンプレート引用部-->
     
     <%= yield %>
     
+    <!--共通フッター-->
   </body>
 </html>
