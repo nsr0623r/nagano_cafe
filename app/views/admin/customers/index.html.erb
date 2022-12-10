@@ -1,2 +1,27 @@
 <h1>Admin::Customers#index</h1>
 <!--管理者：顧客一覧画面-->
+<div class="container">
+  <h4>会員一覧</h4>
+  
+  <table class="customer-content">
+    <thead>
+      <tr>
+        <td>会員ID</td>
+        <td>氏名</td>
+        <td>メールアドレス</td>
+        <td>ステータス</td>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.id %></td>
+        <td><%= customer.name %></td>
+        <td><%= customer.email %></td>
+        <td><%= customer.is_deleted %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
