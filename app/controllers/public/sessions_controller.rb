@@ -3,6 +3,7 @@
 
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  before_action :customer_state, only: [:create]
   
   # ログイン後遷移先
   def after_sign_in_path_for(resources)
@@ -33,8 +34,10 @@ class Public::SessionsController < Devise::SessionsController
   
   def customer_state
     @customer = Customer.find_by(email: params[:customer][:email])
-    return if !@customer
-    if @customer.valid_password?(params[:customer][:password])
+    if @customer
+      if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted == true
+        redirect_to customer_registration_path
+      end
     end
   end
 

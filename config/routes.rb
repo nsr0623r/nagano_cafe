@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   # 管理者用
   namespace :admin do
-    resources :homes, only: [:top]
+    get 'top' => 'homes#top', as: 'homes_top'
     resources :items, only: [:new, :create, :index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :update, :create]
     resources :customers, only: [:index, :show, :edit, :update]
@@ -29,11 +29,11 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
     resources :address, only: [:index, :edit, :create, :update, :destroy]
     resource :customers do
-      get '/customers/my_page' => 'customers#show', as: 'my_page'
-      get '/customers/infomation/edit' => 'customers#edit', as: 'infomation_edit'
-      patch '/customers/infomation' => 'customers#update', as: 'informa'
-      get '/customers/unsubscribe' => 'customers#unsubscribe'
-      patch '/customers/withdraw' => 'customers#withdraw'
+      get 'my_page' => 'customers#show', as: 'my_page'
+      get 'infomation/edit' => 'customers#edit', as: 'infomation_edit'
+      patch 'infomation' => 'customers#update', as: 'informa'
+      get 'unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+      patch 'withdraw' => 'customers#withdraw', as: 'withdraw'
     end
   end
 

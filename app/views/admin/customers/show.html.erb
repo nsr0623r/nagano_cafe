@@ -1,7 +1,7 @@
 <h1>Admin::Customers#show</h1>
 <!--管理者：顧客詳細画面-->
 <div class="container">
-  <h4><%= @customer.name %>さんの会員詳細</h4>
+  <h4><%= @customer.first_name %><%= @customer.last_name %>さんの会員詳細</h4>
   
   <div class="customer-container">
     <p>
@@ -42,5 +42,8 @@
         退会
       <% end %>
     </p>
+  </div>
+  <div>
+    <%= link_to '編集する', edit_admin_customer_path %>
   </div>
 </div>

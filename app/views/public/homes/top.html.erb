@@ -16,7 +16,13 @@
     <h3>新着商品</h3>
     <div class="item-box">
       <% @items.each do |item| %>
-      <p><%= image_tag item.image, size: "100x100" %></p>
+      <p>
+        <% if item.image.attached? %>
+          <%= image_tag item.image, size: "100x100" %>
+        <% else %>
+          <%= image_tag 'default-image', size: "100x100" %>
+        <% end %>
+      </p>
       <p><%= item.name %></p>
       <p><%= item.price %></p>
       <% end %>

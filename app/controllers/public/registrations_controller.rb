@@ -7,7 +7,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   
   # 新規登録後遷移先
   def after_sign_up_path_for(resources)
-    item_path
+    items_path
   end
   
   # ログアウト後遷移先
